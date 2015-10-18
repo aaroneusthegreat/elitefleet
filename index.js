@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', function(request, response){
-  response.render('index');
+  response.render('index.jade');
 });
 
 app.get('/HelloWorld', function(request, response){
