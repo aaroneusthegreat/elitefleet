@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', function(request, response){
-  response.render('views/index');
+  response.render('index');
 });
 
 app.get('/HelloWorld', function(request, response){
