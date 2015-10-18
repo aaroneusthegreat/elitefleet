@@ -23,9 +23,7 @@ app.get('/', function(request, response){
   response.render('index.jade');
 });
 
-app.get('/HelloWorld', function(request, response){
-  response.end("HelloWorld, how do you like them apples?");
-});
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
