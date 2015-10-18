@@ -12,9 +12,15 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.use(function(req, res, next) {
+   if (req.url === '/app/views') {
+     req.url = '/views';
+   }
+   next();
+});
 
 app.get('/', function(request, response){
-  response.render('index');
+  response.render('/views/index.jade');
 });
 
 app.get('/HelloWorld', function(request, response){
