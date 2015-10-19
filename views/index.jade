@@ -2,29 +2,33 @@
 
 extends layout
 
+
+
 block content
-    h1= title
-    p Welcome to our test
-    p Look at me making changes and junk! 
+
+
+    h1="Elite Fleet"
+    p Welcome to our Prototype
+
+    input(type='file' name='input')
+    input(type='button' value="Submit Data")
+
     // Wrapper
-    #wrapper
+      #wrapper
 
         // USER LIST
-        h2 User List
-        #userList
+          h2 User List
+          #userList
             table
                 thead
-                    th UserName
-                    th Email
-                    th Delete?
+                    th "CarID"
+                    th "Breakdown"
+                    th "Date"
                 tbody
+                    td car1
+
         // /USER LIST
 
     // /WRAPPER
 
 extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-
