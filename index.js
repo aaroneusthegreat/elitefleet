@@ -23,7 +23,7 @@ app.get('/', function(request, response){
   response.render('index.jade');
 });
 
-app.get('/test.jade', function(req, res, next) {
+app.get('/test', function(req, res, next) {
     res.render('test.jade', { title: 'Express' })
 });
 
