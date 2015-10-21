@@ -17,6 +17,11 @@ app.get('/', function(request, response){
   response.render('index');
 });
 
+app.get('/test', function(request, response){
+  response.render('test');
+});
+
+
 app.get('/HelloWorld', function(request, response){
   response.end("HelloWorld, how do you like them apples?");
 });
