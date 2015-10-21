@@ -4,10 +4,8 @@
 
 
     var grid = dhtmlXGridFromTable("books_table");
-    grid.enableAutoWidth(true);
-    grid.enableAutoHeight(true);
+    grid.setInitWidths("100,100,100");
     grid.setSizes();
-    grid.enableMultiselect(true);
 
 
 
