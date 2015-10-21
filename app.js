@@ -16,6 +16,9 @@ var databaseUrl = "mongodb://heroku_7w45jd6n:9uu5gh7nlpqkg8h15girn5k90e@ds039404
 var collections = ["users", "reports"]
 var db = require("mongojs");
 
+app.listen(process.env.PORT, '0.0.0.0', function(err) {
+    console.log("Started listening on %s", app.url);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
