@@ -23,6 +23,9 @@ app.get('/', function(request, response){
   response.render('index.jade');
 });
 
+router.get('/test', function(req, res, next) {
+    res.render('test', { title: 'Express' })
+});
 
 
 
