@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
    next();
 });
 
-app.get('/', function(request, response){
+app.get('/', function(request, response, next){
   response.render('index.jade');
 });
 

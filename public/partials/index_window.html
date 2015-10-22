@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/codebase/dhtmlx.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
+<script src="/codebase/dhtmlx.js"></script>
+<script src="/jquery/dist/jquery.js"></script>
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<table>
+    <tr style="width:100%">
+        <td style="width:25%">
+            <table class='nav-block'>
+                <p><strong>MAIN MENU</strong></p>
+                <tr style="padding-top:5%">
+                    <td>
+                        <img class="nav-block" src="/images/bevelledGrayBar.gif">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                    <img class="nav-block" src="/images/bevelledGrayBar.gif">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <img class="nav-block" src="/images/bevelledGrayBar.gif">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <img class="nav-block" src="/images/bevelledGrayBar.gif">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <img class="nav-block" src="/images/bevelledGrayBar.gif">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <img class="nav-block" src="/images/bevelledGrayBar.gif">
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="width:75%">
+            <h1>
+                Welcome to EliteFleet!!!
+            </h1>
+                <table id="books_table" style="width:300px;height:150px">
+                    <tr>
+                        <td>
+                            Make
+                        </td>
+                        <td>
+                            Model
+                        </td>
+                        <td>
+                            Year
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Honda
+                        </td>
+                        <td>
+                            Accord
+                        </td>
+                        <td>
+                            1999
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Hyundai
+                        </td>
+                        <td>
+                            Accent
+                        </td>
+                        <td>
+                            2005
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Dodge
+                        </td>
+                        <td>
+                            Grand Caravan
+                        </td>
+                        <td>
+                            2012
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Plymouth
+                        </td>
+                        <td>
+                            Breeze
+                        </td>
+                        <td>
+                            2001
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Chevy
+                        </td>
+                        <td>
+                            Cavalier
+                        </td>
+                        <td>
+                            1999
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Chrysler
+                        </td>
+                        <td>
+                            Concord
+                        </td>
+                        <td>
+                            1995
+                        </td>
+                    </tr>
+                </table>
+            </td>
+       </tr>
+</table>
+
+<script>
+    $(document).ready(function(){
+        var grid = dhtmlXGridFromTable("books_table");
+        grid.enableAutoWidth(true,900,500);
+        grid.enableAutoHeight(true, 900, 400);
+        grid.setColumnMinWidth("200,200,200")
+        grid.enableColumnAutoSize(true);
+        // grid.setHeight(150);
+        grid.setSizes();
+        $('.nav-block').css('width', '100%');
+        $('.nav-block').css('max-width', '200px');
+    })
+</script>

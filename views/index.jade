@@ -2,43 +2,9 @@
 
 extends layout
 
-
-
 block content
 
-
-    h1="Elite Fleet"
-    p Welcome to our Prototype
-    form(name="test-form", method="put")
-        input(type='file' name='input')
-        input(type='submit' value="Submit Data")
-
-    table
-        th(colspan="3") Test Table
-            tr(style="width:100%;border:1px solid black;")
-                td "one" 
-                td "two"
-                td "three"
-            tr
+    div(id="winVP" style="position: relative; height: 1000px; border: #cecece 1px solid; margin: 10px;")
+    script(src='javascripts/main.js')
 
 
-
-    // Wrapper
-      #wrapper
-
-        // USER LIST
-          h2 User List
-          #userList
-            table
-                thead
-                    th "CarID"
-                    th "Breakdown"
-                    th "Date"
-                tbody
-                    td car1
-
-        // /USER LIST
-
-    // /WRAPPER
-
-extends layout
