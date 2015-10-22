@@ -19,7 +19,7 @@
         }
         var id = "userWin"+(idPrefix++);
         //
-        var w = 830;
+        var w = 1245;
         var h = 420;
         var x = 0;
         var y = 0;
