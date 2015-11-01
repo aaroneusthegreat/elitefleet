@@ -1,22 +1,7 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/test', function(req, res, next) {
-	res.render('test', { title: 'Express' })
-});
-
-router.put('/',function(request,response){
-=======
 var bodyParser = require('body-parser');
-
-
-
 
 
 /* GET home page. */
@@ -35,7 +20,7 @@ var findvehicles = function(db, callback){
     cursor.each(function(err, doc){
         console.log('in vehicles');
         if(doc != null){
-            console.log('should be getting somehting out of the database now');
+
             console.dir(doc);
         }
         else{
@@ -63,15 +48,5 @@ router.post('/newvehicle', function(req, res){
 });
 
 
-
-
-
-
->>>>>>> 9247c43... Got database connections working using asynchronous connections
-
-	console.log(request);
-	response.render();
-
-})
 
 module.exports = router;

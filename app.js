@@ -6,13 +6,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var jquery = require('jquery');
-<<<<<<< HEAD
-=======
+
 var MongoClient = require('bluebird').promisifyAll(require('mongodb')).MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 
 
->>>>>>> 9247c43... Got database connections working using asynchronous connections
 
 
 
@@ -26,9 +24,10 @@ var databaseUrl = "mongodb://heroku_7w45jd6n:9uu5gh7nlpqkg8h15girn5k90e@ds039404
 var collections = ["users", "reports"]
 var db = require("mongojs");
 
-app.listen(process.env.PORT, '0.0.0.0', function(err) {
-    console.log("Started listening on %s", app.url);
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
 });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -76,28 +75,13 @@ app.use(function(err, req, res, next) {
   });
 });
 
-<<<<<<< HEAD
-var mongo_db; 
-var MongoClient = require('mongodb').MongoClient
-    , format = require('util').format;
-MongoClient.connect('mongodb://heroku_7w45jd6n:9uu5gh7nlpqkg8h15girn5k90e@ds039404.mongolab.com:39404/heroku_7w45jd6n', function (err, db) {
-    if (err) {
-        throw err;
-    } else {
-        console.log("successfully connected to the database");
-    }
-   // db.close();
-   mongo_db = db;
-});
 
-
-=======
 
 
 
 insertVehicle = function(data)
 {
-    MongoClient.connectAsync(databaseUrl).then( function(err, db){
+    MongoClient.connect(databaseUrl, function(err, db){
         db.collection('vehicles').insertOne(
             {
                 "vehiclemake": data.vehiclemake,
@@ -152,11 +136,6 @@ loadVehicles = function(res){
 
 
 
- /*
-tempdata = {"vehiclemake":'fordcar', "vehiclestate":'workingIGuess'};
-insertVehicle(tempdata);
-*/
 
 
->>>>>>> 9247c43... Got database connections working using asynchronous connections
 module.exports = app;

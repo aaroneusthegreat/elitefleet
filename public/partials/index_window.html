@@ -14,44 +14,73 @@
     <tr style="width:100%">
         <td style="width:25%">
             <table class='nav-block'>
-                <p><strong>MAIN MENU</strong></p>
+                <p style="padding-left:45px;"><strong>MAIN MENU</strong></p>
                 <tr style="padding-top:5%">
                     <td>
+                        <P style="position:absolute;float:left;float:top;padding-left:65px;padding-top:10px;color:white;">
+                            <strong>Home</strong>
+                        </P>
                         <img class="nav-block" src="/images/bevelledGrayBar.gif">
                     </td>
                 </tr>
 
                 <tr>
                     <td>
+                        <P style="position:absolute;float:left;float:top;padding-left:65px;padding-top:10px;color:white;">
+                            <strong>Maintenance</strong>
+                        </P>
                     <img class="nav-block" src="/images/bevelledGrayBar.gif">
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <P style="position:absolute;float:left;float:top;padding-left:65px;padding-top:10px;color:white;">
+                            <strong>Scheduling</strong>
+                        </P>
                     <img class="nav-block" src="/images/bevelledGrayBar.gif">
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <P style="position:absolute;float:left;float:top;padding-left:65px;padding-top:10px;color:white;">
+                            <strong>Personnel</strong>
+                        </P>
                     <img class="nav-block" src="/images/bevelledGrayBar.gif">
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <P style="position:absolute;float:left;float:top;padding-left:65px;padding-top:10px;color:white;">
+                            <strong>Users</strong>
+                        </P>
                     <img class="nav-block" src="/images/bevelledGrayBar.gif">
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <P style="position:absolute;float:left;float:top;padding-left:65px;padding-top:10px;color:white;">
+                            <strong>App Settings</strong>
+                        </P>
                     <img class="nav-block" src="/images/bevelledGrayBar.gif">
                     </td>
                 </tr>
             </table>
         </td>
         <td style="width:75%">
-            <h1>
-                Welcome to EliteFleet!!!
+            <h1 style="color:darkblue">
+               <strong>Welcome to Elite-Fleet!</strong>
             </h1>
+                <table style="float:right;">
+                    <tr style="width:100%">
+                        <td>
+                            <strong><p style="padding-top:10px;padding-right:20px;">Search: </p></strong>
+                        </td>
+                        <td>
+                            <input type="text" label="search" placeholder="Enter your query...">
+                        </td>
+                    </tr>
+                </table>
+
                 <table id="books_table" style="width:300px;height:150px">
                     <tr>
                         <td>
@@ -62,6 +91,15 @@
                         </td>
                         <td>
                             Year
+                        </td>
+                        <td>
+                            Vehicle Number
+                        </td>
+                        <td>
+                            Work Order Date In
+                        </td>
+                        <td>
+                            Work Order Date Out
                         </td>
                     </tr>
                     <tr>
@@ -74,6 +112,15 @@
                         <td>
                             1999
                         </td>
+                        <td>
+                            VCN49873458
+                        </td>
+                        <td>
+                            10/1/2015
+                        </td>
+                        <td>
+                            12/5/2015
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -84,6 +131,15 @@
                         </td>
                         <td>
                             2005
+                        </td>
+                        <td>
+                            VCN49846874
+                        </td>
+                        <td>
+                            8/16/2015
+                        </td>
+                        <td>
+                            9/15/2015
                         </td>
                     </tr>
                     <tr>
@@ -96,6 +152,15 @@
                         <td>
                             2012
                         </td>
+                        <td>
+                            VCN49878945
+                        </td>
+                        <td>
+                            7/20/2015
+                        </td>
+                        <td>
+                            7/28/2015
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -106,6 +171,15 @@
                         </td>
                         <td>
                             2001
+                        </td>
+                        <td>
+                            VCN49878531
+                        </td>
+                        <td>
+                            9/5/2015
+                        </td>
+                        <td>
+                            9/25/2015
                         </td>
                     </tr>
                     <tr>
@@ -118,6 +192,15 @@
                         <td>
                             1999
                         </td>
+                        <td>
+                            VCN4987451
+                        </td>
+                        <td>
+                            8/30/2015
+                        </td>
+                        <td>
+                            9/5/2015
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -129,6 +212,15 @@
                         <td>
                             1995
                         </td>
+                        <td>
+                            VCN49879564
+                        </td>
+                        <td>
+                            1/15/2015
+                        </td>
+                        <td>
+                            1/20/2015
+                        </td>
                     </tr>
                 </table>
             </td>
@@ -138,13 +230,17 @@
 <script>
     $(document).ready(function(){
         var grid = dhtmlXGridFromTable("books_table");
-        grid.enableAutoWidth(true,900,500);
+        grid.enableAutoWidth(true,10000,900);
         grid.enableAutoHeight(true, 900, 400);
-        grid.setColumnMinWidth("200,200,200")
+        for (var i = 0; i < 6; i++){
+            grid.setColWidth(i,(900/6));
+        }
+
         grid.enableColumnAutoSize(true);
         // grid.setHeight(150);
         grid.setSizes();
         $('.nav-block').css('width', '100%');
         $('.nav-block').css('max-width', '200px');
+        $('body').css('background-color','lightBlue');
     })
 </script>
