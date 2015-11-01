@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 'stuff'
+
+    ul
+        each vehicle, i in vehiclelist
+            li= "make: " +  vehicle.vehiclemake + ". Vehicle Status: " + vehicle.vehiclecode

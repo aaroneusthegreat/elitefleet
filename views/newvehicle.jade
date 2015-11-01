@@ -1,0 +1,7 @@
+extends layout
+block content
+    h1= title
+    form#formAddVehicle(name="addvehicle",method="post",action="/newvehicle")
+        input#inputVehicleName(type="text", placeholder="vehicle make", name="vehiclemake")
+        input#inputvehiclecode(type="text", placeholder="vehicle code", name="vehiclecode")
+        button#btnSubmit(type="submit") submit

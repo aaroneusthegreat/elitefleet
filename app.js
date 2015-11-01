@@ -1,10 +1,20 @@
 var express = require('express');
 var path = require('path');
+
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var jquery = require('jquery');
+<<<<<<< HEAD
+=======
+var MongoClient = require('bluebird').promisifyAll(require('mongodb')).MongoClient;
+var ObjectId = require('mongodb').ObjectId;
+
+
+>>>>>>> 9247c43... Got database connections working using asynchronous connections
+
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -66,6 +76,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
+<<<<<<< HEAD
 var mongo_db; 
 var MongoClient = require('mongodb').MongoClient
     , format = require('util').format;
@@ -80,4 +91,72 @@ MongoClient.connect('mongodb://heroku_7w45jd6n:9uu5gh7nlpqkg8h15girn5k90e@ds0394
 });
 
 
+=======
+
+
+
+insertVehicle = function(data)
+{
+    MongoClient.connectAsync(databaseUrl).then( function(err, db){
+        db.collection('vehicles').insertOne(
+            {
+                "vehiclemake": data.vehiclemake,
+                "vehiclecode": data.vehiclecode,
+            }, function (err, result) {
+                console.log("A vehicle has just been inserted into the database");
+            });
+
+    });
+
+};
+
+var logVehicles = function(db, callback){
+    var args = [];
+  var cursor = db.collection('vehicles').find();
+    cursor.each(function(err, doc){
+        console.log('accessing the vehicle databse');
+
+        if(doc != null){
+            console.log('should be getting somehting out of the database now');
+            console.dir(doc);
+            args.push(doc);
+        }
+        else{    callback();    }
+
+    });
+
+
+};
+
+loadVehicles = function(res){
+
+    MongoClient.connectAsync(databaseUrl)
+        .then(function(db) {
+            db.collection('vehicles').findAsync({ })
+                .then(function(cursor) {
+                    return cursor.toArrayAsync();
+                })
+                .then(function(arrayOfVehciles) {
+                    console.log(arrayOfVehciles);
+
+                    res.render('vehiclelist.jade',
+                        {title: 'vehicle list',
+                            'vehiclelist':arrayOfVehciles});
+                });
+        });
+
+
+    };
+
+
+
+
+
+ /*
+tempdata = {"vehiclemake":'fordcar', "vehiclestate":'workingIGuess'};
+insertVehicle(tempdata);
+*/
+
+
+>>>>>>> 9247c43... Got database connections working using asynchronous connections
 module.exports = app;
