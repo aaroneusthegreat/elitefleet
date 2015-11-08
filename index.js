@@ -26,7 +26,9 @@ app.get('/', function(request, response, next){
 app.get('/test', function(req, res, next) {
     res.render('test.jade', { title: 'Express' })
 });
-
+app.get('/vehiclelist', function(req, res){
+    loadVehicles(res);
+});
 
 
 app.listen(app.get('port'), function() {

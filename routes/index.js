@@ -31,6 +31,8 @@ var findvehicles = function(db, callback){
 
 };
 
+
+
 router.get('/vehiclelist', function(req, res){
     loadVehicles(res);
 });
@@ -46,6 +48,7 @@ router.post('/newvehicle', function(req, res){
 
     res.redirect('vehiclelist');
 });
+
 
 
 
