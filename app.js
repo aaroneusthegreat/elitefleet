@@ -113,7 +113,6 @@ var logVehicles = function(db, callback){
 };
 
 loadVehicles = function(res){
-
     MongoClient.connectAsync(databaseUrl)
         .then(function(db) {
             db.collection('vehicles').findAsync({ })

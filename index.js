@@ -18,18 +18,13 @@ app.use(function(req, res, next) {
    }
    next();
 });
-
+/*
 app.get('/', function(request, response, next){
   response.render('index.jade');
 });
 
-app.get('/test', function(req, res, next) {
-    res.render('test.jade', { title: 'Express' })
-});
-app.get('/vehiclelist', function(req, res){
-    loadVehicles(res);
-});
 
+*/
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
