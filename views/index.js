@@ -16,5 +16,6 @@ app.get('/', function(request, response){
   response.render('index');
 });
 
+module.export = router;
 
 
