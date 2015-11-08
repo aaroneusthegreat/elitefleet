@@ -18,16 +18,17 @@ app.use(function(req, res, next) {
    }
    next();
 });
-/*
+
 app.get('/', function(request, response, next){
   response.render('index.jade');
 });
 
 
-*/
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
 
+module.exports = app;
