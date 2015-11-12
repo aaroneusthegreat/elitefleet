@@ -4,7 +4,11 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+
+var multiparty = require('multiparty');
+var http = require('http');
+var util = require('util');
+
 var jquery = require('jquery');
 
 var MongoClient = require('bluebird').promisifyAll(require('mongodb')).MongoClient;
@@ -36,8 +40,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -84,8 +87,24 @@ insertVehicle = function(data)
     MongoClient.connect(databaseUrl, function(err, db){
         db.collection('vehicles').insertOne(
             {
-                "vehiclemake": data.vehiclemake,
-                "vehiclecode": data.vehiclecode,
+                'vehicle_id' : data.vehicle_id,
+                'vehicle_class' : data.vehicle_class,
+                'vehicle_year' : data.vehicle_year,
+                'vehicle_make' : data.vehicle_make,
+                'vehicle_model' : data.vehicle_model,
+                'vehicle_status' : data.vehicle_status,
+                'vehicle_workorder' : data.vehicle_status,
+                'vehicle_workorder_date_in' : data.vehicle_workorder_date_in,
+                'vehicle_workorder_date_out' : data.vehicle_workorder_date_out,
+                'vehicle_transaction_date' : data.vehicle_transaction_date,
+                'vehicle_repair_code' : data.vehicle_repair_code,
+                'vehicle_repair_type_desc' : data.vehicle_repair_type_desc,
+                'vehicle_repair_group' : data.vehicle_repair_group,
+                'vehicle_repair_component' : data.vehicle_repair_component,
+                'vehicle_repair_action' : data.vehicle_repair_action,
+                'vehicle_asset_group' : data.vehicle_asset_group,
+                'vehicle_fiscal_year' : data.vehicle_fiscal_year,
+                'vehicle_repair_desc' : data.vehicle_repair_desc
             }, function (err, result) {
                 console.log("A vehicle has just been inserted into the database");
             });
@@ -94,6 +113,8 @@ insertVehicle = function(data)
 
 };
 
+
+//TODO find out if we need this and or remove
 var logVehicles = function(db, callback){
     var args = [];
   var cursor = db.collection('vehicles').find();
@@ -113,7 +134,6 @@ var logVehicles = function(db, callback){
 };
 
 loadVehicles = function(res){
-
     MongoClient.connectAsync(databaseUrl)
         .then(function(db) {
             db.collection('vehicles').findAsync({ })
@@ -121,10 +141,11 @@ loadVehicles = function(res){
                     return cursor.toArrayAsync();
                 })
                 .then(function(arrayOfVehciles) {
+
                     console.log(arrayOfVehciles);
 
                     res.render('vehiclelist.jade',
-                        {title: 'vehicle list',
+                        {title: 'Vehicle List',
                             'vehiclelist':arrayOfVehciles});
                 });
         });
@@ -133,7 +154,9 @@ loadVehicles = function(res){
     };
 
 
-
+app.get('/', function(req, res){
+    app.render('index.jade', {title:'Elite Fleet'});
+});
 
 
 

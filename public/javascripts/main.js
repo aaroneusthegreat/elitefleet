@@ -8,10 +8,10 @@
 		// grid.setHeight(150);
 		//$('.nav-block').css('width', '100%');
 		//$('.nav-block').css('max-width', '200px');
-		$(window).resize(function(){
-			var windowWidth = $(window).width();
-			$('.cars_table').width(windowWidth * .8);
-		});
+		//$(window).resize(function(){
+		//	var windowWidth = $(window).width();
+		//	$('.cars_table').css("width",(windowWidth * .8)+"px");
+		//});
 	})
 
 	
