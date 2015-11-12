@@ -4,7 +4,62 @@ extends layout
 
 block content
 
-    div(id="winVP" style="position: relative; height: 1000px; border: #cecece 1px solid; margin: 10px;")
-    script(src='javascripts/main.js')
+	head
+		h1 Welcome to EliteFleet!!!
+	table
+		tr
+			div(class="row")
+				div(class="col-2-lg")
+					td
+						table(class='nav-block')
+							tr
+								td
+									img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							tr
+								td
+									img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							tr
+								td
+									img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							tr
+								td
+									img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							tr
+								td
+									img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							tr
+								td
+									img(class="nav-block" src="/images/bevelledGrayBar.gif")
+				div(class="col-10-lg")
+					td
+						table(id="cars_table" style="min-width:900px;min-height:400px")
+							tr
+								th Make
+								th Model
+								th Year
+							tr
+								td Honda
+								td Accord
+								td 1999
+							tr
+								td Hyundai
+								td Accent
+								td 2005
+							tr
+								td Dodge
+								td Grand Caravan
+								td 2012
+							tr
+								td Plymouth
+								td Breeze
+								td 2001
+							tr
+								td Chevy
+								td Cavalier
+								td 1999
+							tr
+								td Chrysler
+								td Concord
+								td 1995
 
-
+	script(src="javascripts/main.js")
