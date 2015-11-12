@@ -90,6 +90,7 @@ insertVehicle = function(data)
                 'vehicle_id' : data.vehicle_id,
                 'vehicle_class' : data.vehicle_class,
                 'vehicle_year' : data.vehicle_year,
+                'vehicle_make' : data.vehicle_make,
                 'vehicle_model' : data.vehicle_model,
                 'vehicle_status' : data.vehicle_status,
                 'vehicle_workorder' : data.vehicle_status,
@@ -112,6 +113,8 @@ insertVehicle = function(data)
 
 };
 
+
+//TODO find out if we need this and or remove
 var logVehicles = function(db, callback){
     var args = [];
   var cursor = db.collection('vehicles').find();
@@ -138,10 +141,11 @@ loadVehicles = function(res){
                     return cursor.toArrayAsync();
                 })
                 .then(function(arrayOfVehciles) {
-                    //console.log(arrayOfVehciles);
+
+                    console.log(arrayOfVehciles);
 
                     res.render('vehiclelist.jade',
-                        {title: 'vehicle list',
+                        {title: 'Vehicle List',
                             'vehiclelist':arrayOfVehciles});
                 });
         });
@@ -150,7 +154,9 @@ loadVehicles = function(res){
     };
 
 
-
+app.get('/', function(req, res){
+    app.render('index.jade', {title:'Elite Fleet'});
+});
 
 
 

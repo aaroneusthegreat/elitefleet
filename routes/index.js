@@ -16,6 +16,8 @@ app.get('/upload', function(req,res){
     res.render('upload.jade', {title: 'Upload'});
 });
 
+
+
 app.post('/upload', function(req, res){
 
     fs.readFile(req.files.upload.path, function (err, data) {
@@ -57,7 +59,7 @@ app.get('/vehiclelist', function(req, res){
 app.get('/test', function(req,res){
     res.render('test.jade');
 });
-
+//TODO add false vehicle data trapping
 app.post('/newvehicle', function(req, res){
 
     var form = new formidable.IncomingForm();
@@ -72,6 +74,7 @@ app.post('/newvehicle', function(req, res){
     var vehicle = { 'vehicle_id' : fields.vehicle_id,
                     'vehicle_class' : fields.vehicle_class,
                     'vehicle_year' : fields.vehicle_year,
+                    'vehicle_make' : fields.vehicle_make,
                     'vehicle_model' : fields.vehicle_model,
                     'vehicle_status' : fields.vehicle_status,
                     'vehicle_workorder' : fields.vehicle_status,
@@ -88,7 +91,7 @@ app.post('/newvehicle', function(req, res){
                     'vehicle_repair_desc' : fields.vehicle_repair_desc
 
                   };
-    
+
     console.log(vehicle);
     console.log('________________________');
     insertVehicle(vehicle);
