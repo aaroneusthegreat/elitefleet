@@ -1,8 +1,0 @@
-extends layout
-block content
-    h1 Upload Fleet Data
-
-    form#formUpload(action="/upload", method="post",  enctype="multipart/form-data")
-        input(type="file", name="uploadFile")
-        button#btnSubmit(type="submit") submit
-
