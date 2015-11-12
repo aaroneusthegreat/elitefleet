@@ -1,11 +1,8 @@
 var express = require('express');
 var app = express.Router();
-var http = require('http');
-util = require('util');
-var formidable = require('formidable');
-
 var fs = require('fs');
-
+var busboy = require('connect-busboy');
+app.use(busboy());
 
 /* GET home page. */
 app.get('/', function(req, res) {
@@ -19,14 +16,24 @@ app.get('/upload', function(req,res){
 
 
 app.post('/upload', function(req, res){
-
-    fs.readFile(req.files.upload.path, function (err, data) {
+    var fstream;
+    req.pipe(req.busboy);
+    req.busboy.on('file', function (fieldname, file, filename) {
+        console.log("Uploading: " + filename);
+        fstream = fs.createWriteStream( __dirname + '/../upload/' + filename);
+        file.pipe(fstream);
+        fstream.on('close', function () {
+            res.render('upload.jade');
+        });
+    });
+/*
+    fs.readFile(req.files.uploadFile.path, function (err, data) {
         // ...
         var newPath = __dirname + "/upload";
         fs.writeFile(newPath, data, function (err) {
         });
     });
-
+*/
 
     res.render('index.jade', {title:'Elite Fleet'});
 });
@@ -53,7 +60,9 @@ var findvehicles = function(db, callback){
 };
 
 app.get('/vehiclelist', function(req, res){
+
     loadVehicles(res);
+
 });
 
 app.get('/test', function(req,res){
@@ -91,9 +100,6 @@ app.post('/newvehicle', function(req, res){
                     'vehicle_repair_desc' : fields.vehicle_repair_desc
 
                   };
-
-    console.log(vehicle);
-    console.log('________________________');
     insertVehicle(vehicle);
 
     res.redirect('vehiclelist');
