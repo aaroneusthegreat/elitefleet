@@ -6,8 +6,8 @@
     "start": "node ./bin/www"
   },
   "engines": {
-    "node": "4.1.x",
-    "npm": "1.4.x"
+    "node": "~4.1.x",
+    "npm": "~1.4.x"
   },
   "dependencies": {
     "bluebird": "~3.0.5",
