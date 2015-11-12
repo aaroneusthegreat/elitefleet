@@ -1,35 +1,25 @@
 {
   "name": "elitefleet",
-  "version": "1.0.0",
-  "description": "A barebones Node.js app using [Express 4](http://expressjs.com/).",
-  "main": "index.js",
-  "dependencies": {
-    "bluebird": "^3.0.5",
-    "body-parser": "^1.13.3",
-    "bootstrap": "^3.3.5",
-    "connect-busboy": "^0.0.2",
-    "cookie-parser": "^1.3.5",
-    "debug": "^2.2.0",
-    "ejs": "^2.3.3",
-    "express": "^4.13.3",
-    "formidable": "^1.0.17",
-    "jade": "^1.11.0",
-    "jquery": "^2.1.4",
-    "mongodb": "^2.0.46",
-    "mongojs": "^1.4.1",
-    "monk": "^1.0.1",
-    "morgan": "^1.6.1",
-    "multiparty": "^4.1.2",
-    "serve-favicon": "^2.3.0"
-  },
-  "devDependencies": {},
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@heroku.com:elitefleet.git"
-  },
-  "author": "WAMTE",
-  "license": "GPL"
+  "engines": {
+    "npm": "1.4.28"
+  }
+  ,
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0",
+    "mongodb": "~2.0.46",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "ejs":"~2.3.3"
+  }
 }
