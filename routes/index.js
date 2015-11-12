@@ -6,7 +6,7 @@ app.use(busboy());
 
 /* GET home page. */
 app.get('/', function(req, res) {
-  res.render('index.jade', { title: 'Express' });
+  loadIndex(res);
 });
 
 app.get('/upload', function(req,res){
