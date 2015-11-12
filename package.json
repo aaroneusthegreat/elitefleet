@@ -21,7 +21,8 @@
     "bootstrap": "~3.3.5",
     "jquery": "~2.1.4",
     "ejs": "~2.3.3",
-    "monk": "~1.0.1"
+    "monk": "~1.0.1",
+    "formidable": "~1.0.17"
   },
   "description": "A barebones Node.js app using [Express 4](http://expressjs.com/).",
   "main": "index.js",
