@@ -141,6 +141,23 @@ loadIndex = function(res){
 
 };
 
+loadTest = function(res){
+    MongoClient.connectAsync(databaseUrl)
+        .then(function(db) {
+            db.collection('vehicles').findAsync({ })
+                .then(function(cursor) {
+                    return cursor.toArrayAsync();
+                })
+                .then(function(arrayOfVehciles) {
+                    // console.log(arrayOfVehciles);
+                    res.render('test.jade',
+                        {title: 'Elite Fleet',
+                            'vehiclelist':arrayOfVehciles});
+                });
+        });
+
+};
+
 getVehicles = function(){
     var temp = new Object();
     db = monk(databaseUrl);

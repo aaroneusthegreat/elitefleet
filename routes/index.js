@@ -13,6 +13,10 @@ app.get('/upload', function(req,res){
     res.render('upload.jade', {title: 'Upload'});
 });
 
+app.get('/test', function(req,res){
+    loadTest(res);
+});
+
 
 app.get('/listvehicles', function(rew, res){
    res.redirect('/vehiclelist');
