@@ -14,6 +14,9 @@ app.get('/upload', function(req,res){
 });
 
 
+app.get('/listvehicles', function(rew, res){
+   res.redirect('/vehiclelist');
+});
 
 app.post('/upload', function(req, res){
     var fstream;
