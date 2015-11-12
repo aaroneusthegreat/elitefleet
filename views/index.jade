@@ -3,59 +3,34 @@
 extends layout
 
 block content
-	h1 Welcome to EliteFleet!!!
+
+	center
+		h1 Welcome to EliteFleet!!!
 	
 	div(class="row")
 		div(class="col-sm-2")
-			table(class='nav-block')
-				tr
-					td
-						img(class="nav-block" src="/images/bevelledGrayBar.gif")
-				tr
-					td
-						img(class="nav-block" src="/images/bevelledGrayBar.gif")
-				tr
-					td
-						img(class="nav-block" src="/images/bevelledGrayBar.gif")
-				tr
-					td
-						img(class="nav-block" src="/images/bevelledGrayBar.gif")
-				tr
-					td
-						img(class="nav-block" src="/images/bevelledGrayBar.gif")
-				tr
-					td
-						img(class="nav-block" src="/images/bevelledGrayBar.gif")
+			center
+				table(class='nav-block')
+					tr
+						td
+							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+					tr
+						td
+							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+					tr
+						td
+							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+					tr
+						td
+							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+					tr
+						td
+							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+					tr
+						td
+							img(class="nav-block" src="/images/bevelledGrayBar.gif")
 		
 		div(class="col-sm-10")
-			table(class="table-responsive" id="cars_table")
-				tr
-					th Make
-					th Model
-					th Year
-				tr
-					td Honda
-					td Accord
-					td 1999
-				tr
-					td Hyundai
-					td Accent
-					td 2005
-				tr
-					td Dodge
-					td Grand Caravan
-					td 2012
-				tr
-					td Plymouth
-					td Breeze
-					td 2001
-				tr
-					td Chevy
-					td Cavalier
-					td 1999
-				tr
-					td Chrysler
-					td Concord
-					td 1995
+			table(id="dg" style="width:95%;max-height:600px;padding-top:50px;")
 
 	script(src="javascripts/main.js")
