@@ -1,0 +1,46 @@
+
+
+extends layout
+
+block content
+
+  body(class="easyui-layout")
+    div(data-options="region:'north',title:'North Title',split:true" style="height:100px;")
+      center
+        h1 EliteFleet
+    div(data-options="region:'south',title:'South Title',split:true" style="height:100px;")
+    div(data-options="region:'east',title:'East',split:true" style="width:100px;")
+    div(data-options="region:'west',title:'West',split:true" style="width:100px;")
+    div(data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;")
+      
+      div(id="tb" style="padding:3px")
+        span Make:
+        input(id="make" style="line-height:26px;border:1px solid #ccc")
+        span Model:
+        input(id="model" style="line-height:26px;border:1px solid #ccc")
+        span Year:
+        input(id="year" style="line-height:26px;border:1px solid #ccc")
+        a(href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()") Search
+
+
+      table(class="easyui-datagrid" style="width:95%" toolbar="#tb" 
+      data-options="url:'datagrid_data.json',fitColumns:true,singleSelect:true")
+        thead
+          tr
+            th(data-options="field:'id',width:100") ID
+            th(data-options="field:'make',width:100") Make
+            th(data-options="field:'model',width:100") Model
+            th(data-options="field:'year',width:100") Year
+        tbody
+          each vehicle, i in vehiclelist
+            tr
+              td 
+                p="ID " +  vehicle.vehicle_id
+              td
+                p="Vehicle Make: " + vehicle.vehicle_make
+              td
+                p="Model " + vehicle.vehicle_model
+              td
+                p="Year " + vehicle.vehicle_year
+
+  script(src="javascripts/main.js")

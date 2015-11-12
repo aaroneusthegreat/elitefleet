@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Logged Vehicles
+
+    ul
+        each vehicle, i in vehiclelist
+            li
+                p="ID " +  vehicle.vehicle_id
+                p="Vehicle Make: " + vehicle.vehicle_make
+                p="Model " + vehicle.vehicle_model
+                p="Year " + vehicle.vehicle_year
