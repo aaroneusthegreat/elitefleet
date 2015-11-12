@@ -1,11 +1,14 @@
 var express = require('express');
 var path = require('path');
-
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var monk = require('monk');
+var formidable = require('formidable');
 
-var multiparty = require('multiparty');
+
+
+
 var http = require('http');
 var util = require('util');
 
@@ -14,24 +17,19 @@ var jquery = require('jquery');
 var MongoClient = require('bluebird').promisifyAll(require('mongodb')).MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 
-
-
-
+//TODO figure out why heroku can't 'get'
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
 
 // app.js
 var databaseUrl = "mongodb://heroku_7w45jd6n:9uu5gh7nlpqkg8h15girn5k90e@ds039404.mongolab.com:39404/heroku_7w45jd6n"; // "username:password@example.com/mydb"
-var collections = ["users", "reports"]
 var db = require("mongojs");
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +43,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,9 +50,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -67,7 +62,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
@@ -108,31 +102,11 @@ insertVehicle = function(data)
             }, function (err, result) {
                 console.log("A vehicle has just been inserted into the database");
             });
-
     });
-
 };
 
 
-//TODO find out if we need this and or remove
-var logVehicles = function(db, callback){
-    var args = [];
-  var cursor = db.collection('vehicles').find();
-    cursor.each(function(err, doc){
-        console.log('accessing the vehicle databse');
-
-        if(doc != null){
-            console.log('should be getting somehting out of the database now');
-            console.dir(doc);
-            args.push(doc);
-        }
-        else{    callback();    }
-
-    });
-
-
-};
-
+//load vehicles asynchronously
 loadVehicles = function(res){
     MongoClient.connectAsync(databaseUrl)
         .then(function(db) {
@@ -141,24 +115,23 @@ loadVehicles = function(res){
                     return cursor.toArrayAsync();
                 })
                 .then(function(arrayOfVehciles) {
-
-                    console.log(arrayOfVehciles);
-
+                   // console.log(arrayOfVehciles);
                     res.render('vehiclelist.jade',
                         {title: 'Vehicle List',
                             'vehiclelist':arrayOfVehciles});
                 });
         });
 
+};
 
-    };
+getVehicles = function(){
+    var temp = new Object();
+    db = monk(databaseUrl);
+    var collection = db.get('vehicles');
+    collection.find({},{},function(e,docs){
+     //docs has an array of objects, but I'm not sure how to return them asychronously
+        temp = docs;
+    });
 
-
-app.get('/', function(req, res){
-    app.render('index.jade', {title:'Elite Fleet'});
-});
-
-
-
-
+};
 module.exports = app;
