@@ -13,24 +13,51 @@ block content
 				table(class='nav-block')
 					tr
 						td
-							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							center
+								p 
+									b Home
 					tr
 						td
-							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							center
+								p
+									b Vehicle List
 					tr
 						td
-							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							center
+								p
+									b Maintainence
 					tr
 						td
-							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							center
+								p
+									b Administration
 					tr
 						td
-							img(class="nav-block" src="/images/bevelledGrayBar.gif")
-					tr
-						td
-							img(class="nav-block" src="/images/bevelledGrayBar.gif")
+							center
+								p
+									b Users
 		
 		div(class="col-sm-10")
-			table(id="dg" style="width:95%;max-height:600px;padding-top:50px;")
+			
+
+			table(class="easyui-datagrid" style="width:95%"
+			data-options="url:'datagrid_data.json',fitColumns:true,singleSelect:true")
+				thead
+					tr
+						th(data-options="field:'id',width:100") ID
+						th(data-options="field:'make',width:100") Make
+						th(data-options="field:'model',width:100") Model
+						th(data-options="field:'year',width:100") Year
+				tbody
+					each vehicle, i in vehiclelist
+						tr
+							td 
+								p="ID " +  vehicle.vehicle_id
+							td
+								p="Vehicle Make: " + vehicle.vehicle_make
+							td
+								p="Model " + vehicle.vehicle_model
+							td
+								p="Year " + vehicle.vehicle_year
 
 	script(src="javascripts/main.js")
